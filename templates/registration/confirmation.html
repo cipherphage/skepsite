@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if registration.status == 'waitlisted' %}
+    Waitlisted — Skepticamp NYC
+  {% else %}
+    You're Registered! — Skepticamp NYC
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="confirmation-section" aria-labelledby="confirmation-heading">
+
+  <!-- Particle burst (rendered by Vue if available, otherwise decorative divs) -->
+  <div id="particle-burst" aria-hidden="true" style="position:fixed; pointer-events:none; inset:0; z-index:50; overflow:hidden;"></div>
+
+  <div class="confirmation-card {% if registration.status == 'waitlisted' %}confirmation-card--waitlisted{% endif %}">
+
+    <!-- Animated checkmark (or clock for waitlisted) -->
+    <div class="confirmation-icon-wrap">
+      {% if registration.status == 'waitlisted' %}
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-label="Waitlisted" role="img">
+        <circle class="confirmation-circle" cx="40" cy="40" r="36"
+                fill="rgba(251,191,36,0.12)" stroke="#FBBF24" stroke-width="3"/>
+        <path d="M40 26v16l8 8" stroke="#FBBF24" stroke-width="4" stroke-linecap="round" class="confirmation-checkmark"/>
+      </svg>
+      {% else %}
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-label="Registration confirmed" role="img">
+        <circle class="confirmation-circle" cx="40" cy="40" r="36"
+                fill="rgba(52,211,153,0.12)" stroke="#34D399" stroke-width="3"/>
+        <path class="confirmation-checkmark" d="M26 42l10 10 18-20"
+              stroke="#34D399" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+              fill="none" stroke-dasharray="100" stroke-dashoffset="100"/>
+      </svg>
+      {% endif %}
+    </div>
+
+    <!-- Status badge -->
+    <div>
+      {% if registration.status == 'waitlisted' %}
+      <span class="badge badge--warning badge--lg">Waitlisted</span>
+      {% else %}
+      <span class="badge badge--success badge--lg">Confirmed</span>
+      {% endif %}
+    </div>
+
+    <!-- Heading -->
+    <div>
+      {% if registration.status == 'waitlisted' %}
+      <h1 id="confirmation-heading" style="font-size:2rem; color:var(--text-primary); margin-bottom:var(--space-xs);">
+        You're on the waitlist!
+      </h1>
+      <p style="color:var(--text-secondary); font-size:0.9375rem;">
+        We're at capacity for in-person attendees. You're #{{ registration.pk }} on the waitlist.
+        We'll email you at <strong>{{ registration.email }}</strong> if a spot opens up.
+      </p>
+      {% else %}
+      <h1 id="confirmation-heading" style="font-size:2rem; color:var(--text-primary); margin-bottom:var(--space-xs);">
+        You're registered!
+      </h1>
+      <p style="color:var(--text-secondary); font-size:0.9375rem;">
+        A confirmation has been sent to <strong>{{ registration.email }}</strong>.
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Confirmation number -->
+    <div>
+      <div style="font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:var(--space-xs);">
+        Confirmation Number
+      </div>
+      <div class="confirmation-number font-mono" aria-label="Confirmation number: {{ registration.confirmation_number }}">
+        {{ registration.confirmation_number }}
+      </div>
+    </div>
+
+    <!-- Details card -->
+    <div class="confirmation-details" aria-label="Registration details">
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Name</span>
+        <span class="confirmation-detail-value">{{ registration.full_name }}</span>
+      </div>
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Type</span>
+        <span class="confirmation-detail-value">
+          <span class="badge badge--{{ registration.registration_type }}">
+            {{ registration.get_registration_type_display }}
+          </span>
+        </span>
+      </div>
+      {% if registration.attendance_format %}
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Format</span>
+        <span class="confirmation-detail-value">{{ registration.get_attendance_format_display }}</span>
+      </div>
+      {% endif %}
+      {% if event %}
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Date</span>
+        <span class="confirmation-detail-value">{{ event.date|date:"F j, Y" }}</span>
+      </div>
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Time</span>
+        <span class="confirmation-detail-value">{{ event.start_time|time:"g:i A" }} – {{ event.end_time|time:"g:i A" }} EST</span>
+      </div>
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Location</span>
+        <span class="confirmation-detail-value" style="text-align:right;">
+          {{ event.venue_name }}<br>
+          {{ event.venue_address }}<br>
+          {{ event.venue_city }}
+        </span>
+      </div>
+      {% endif %}
+      {% if registration.registration_type == 'presenter' and registration.talk_title %}
+      <div class="confirmation-detail-row">
+        <span class="confirmation-detail-label">Talk</span>
+        <span class="confirmation-detail-value" style="text-align:right;">{{ registration.talk_title }}</span>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Actions -->
+    <div class="confirmation-actions">
+      {% if event %}
+      <a href="{% url 'registration:calendar-ics' registration.confirmation_token %}"
+         class="btn btn-secondary btn-md"
+         aria-label="Add Skepticamp NYC to your calendar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Add to Calendar
+      </a>
+      {% endif %}
+      <a href="/" class="btn btn-ghost btn-md">Back to Home</a>
+    </div>
+
+    <!-- Footer note -->
+    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:var(--space-md);">
+      Questions? Email us at <a href="mailto:admin@skepticampnyc.org" style="color:var(--text-accent);">admin@skepticampnyc.org</a>
+      &nbsp;&middot;&nbsp; <a href="/privacy/" style="color:var(--text-muted);">Privacy Policy</a>
+    </p>
+
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Particle burst on confirmed registration
+  (function () {
+    var status = '{{ registration.status }}';
+    if (status !== 'confirmed') return;
+
+    var container = document.getElementById('particle-burst');
+    if (!container) return;
+
+    var colors = ['#4FAAFF', '#C084FC', '#34D399', '#FBBF24'];
+    var centerX = window.innerWidth / 2;
+    var centerY = window.innerHeight / 2;
+
+    for (var i = 0; i < 24; i++) {
+      var el = document.createElement('div');
+      var angle = (i / 24) * 360;
+      var dist = 120 + Math.random() * 140;
+      var tx = Math.cos(angle * Math.PI / 180) * dist;
+      var ty = Math.sin(angle * Math.PI / 180) * dist;
+      var size = 6 + Math.random() * 8;
+      var color = colors[Math.floor(Math.random() * colors.length)];
+      var delay = Math.random() * 200;
+
+      el.style.cssText = [
+        'position:absolute',
+        'left:' + centerX + 'px',
+        'top:' + centerY + 'px',
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+        'background:' + color,
+        'border-radius:50%',
+        '--tx:' + tx + 'px',
+        '--ty:' + ty + 'px',
+        '--delay:' + delay + 'ms',
+      ].join(';');
+      el.classList.add('particle');
+      container.appendChild(el);
+    }
+
+    setTimeout(function () { container.innerHTML = ''; }, 1200);
+  })();
+</script>
+{% endblock %}

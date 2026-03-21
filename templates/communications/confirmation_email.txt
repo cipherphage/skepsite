@@ -1,0 +1,39 @@
+Hi {{ registration.first_name }},
+
+You're registered for Skepticamp NYC 2025 as an {{ type_label }}!
+
+CONFIRMATION NUMBER: {{ registration.confirmation_number }}
+
+EVENT DETAILS
+Date: December 6, 2025
+Time: 9:30 AM – 6 PM EST
+Venue: 151 W. 30th St, 3rd Floor, New York, NY 10001
+Admission: Free
+
+{% if registration.attendance_format == 'online' %}
+You've registered to attend online. We'll send you streaming details closer to the event.
+{% endif %}
+
+{% if registration.registration_type == 'presenter' and registration.talk_title %}
+YOUR TALK
+Title: {{ registration.talk_title }}
+Duration: {{ registration.talk_duration }} minutes
+
+We'll be in touch with scheduling information.
+{% endif %}
+
+{% if registration.status == 'waitlisted' %}
+NOTE: You are currently on the waitlist for in-person attendance. We'll email you immediately if a spot opens up. Online attendance remains available.
+{% endif %}
+
+To add this event to your calendar, visit your confirmation page:
+https://skepticampnyc.org/register/confirmation/{{ registration.confirmation_token }}/
+
+Questions? Email admin@skepticampnyc.org
+
+See you December 6!
+— The Skepticamp NYC Team
+
+---
+Unsubscribe: To cancel your registration, reply to this email.
+Privacy Policy: https://skepticampnyc.org/privacy/

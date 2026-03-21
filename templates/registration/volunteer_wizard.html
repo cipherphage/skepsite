@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Volunteer Registration — Skepticamp NYC{% endblock %}
+{% block meta_description %}Volunteer at Skepticamp NYC 2025.{% endblock %}
+
+{% block content %}
+<section class="wizard-section" aria-labelledby="wizard-heading">
+  <div class="wizard-container">
+    <div class="wizard-card">
+      <header style="margin-bottom:var(--space-lg);">
+        <span class="badge badge--volunteer badge--lg" style="margin-bottom:var(--space-sm);">Volunteer Registration</span>
+        <h1 id="wizard-heading" style="font-size:1.75rem; color:var(--text-primary);">Volunteer</h1>
+        <p style="color:var(--text-secondary); margin-top:var(--space-xs);">
+          Help make Skepticamp NYC happen. Multiple roles available, full day or shifts.
+        </p>
+      </header>
+
+      <!-- Vue wizard mounts here -->
+      <div id="registration-wizard"
+           data-wizard-type="volunteer"
+           data-csrf-token="{{ csrf_token }}"
+           data-submit-url="{% url 'registration:submit' 'volunteer' %}">
+      </div>
+
+      <noscript>
+        <div style="background:var(--state-warning-subtle); border:1px solid var(--state-warning); border-radius:var(--radius-lg); padding:var(--space-lg); text-align:center;">
+          <p style="color:var(--state-warning); font-weight:600; margin-bottom:var(--space-sm);">
+            JavaScript Required
+          </p>
+          <p style="color:var(--text-secondary); font-size:0.9375rem;">
+            JavaScript is required to complete registration.
+            Please enable JavaScript or contact us at
+            <a href="mailto:admin@skepticampnyc.org">admin@skepticampnyc.org</a>.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </div>
+</section>
+{% endblock %}

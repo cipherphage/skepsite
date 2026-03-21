@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Skepticamp NYC — Share the Apple of Knowledge{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" aria-labelledby="hero-headline">
+  <div class="hero-content">
+
+    <!-- 1. Overline badge -->
+    <div class="hero-animate" style="margin-bottom:var(--space-lg);">
+      <span class="badge badge--neutral badge--lg">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        December 6, 2025 &nbsp;&middot;&nbsp; Free &nbsp;&middot;&nbsp; New York City
+      </span>
+    </div>
+
+    <!-- 2. Display headline -->
+    <h1 id="hero-headline" class="hero-display-headline hero-animate">
+      Share the Apple of <span class="gradient-text">Knowledge</span>
+    </h1>
+
+    <!-- 3. Subheadline -->
+    <p class="hero-subheadline hero-animate">
+      A free, one-day unconference where curious New Yorkers present and explore
+      science, critical thinking, and consumer protection — no credentials required.
+    </p>
+
+    <!-- 4. CTA buttons -->
+    <div class="hero-ctas hero-animate">
+      <a href="/register/" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        Register Now
+      </a>
+      <a href="#about-strip" class="btn btn-ghost btn-lg">
+        Learn More
+      </a>
+    </div>
+
+  </div>
+
+  <!-- 5. Scroll indicator -->
+  <div class="scroll-indicator-wrap" aria-hidden="true">
+    <svg class="scroll-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EVENT INFO STRIP
+     ============================================================ -->
+<section class="event-strip" aria-label="Event details">
+  <div class="event-strip-inner container container--standard">
+
+    <div class="event-stat">
+      <svg class="event-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <div class="event-stat-text">
+        <span class="event-stat-label">Date &amp; Time</span>
+        <span class="event-stat-value">December 6, 2025 &middot; 9:30 AM – 6 PM EST</span>
+      </div>
+    </div>
+
+    <div class="event-stat">
+      <svg class="event-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <div class="event-stat-text">
+        <span class="event-stat-label">Location</span>
+        <span class="event-stat-value">151 W. 30th St, 3rd Floor, New York, NY 10001</span>
+      </div>
+    </div>
+
+    <div class="event-stat">
+      <svg class="event-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+        <line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+      <div class="event-stat-text">
+        <span class="event-stat-label">Admission</span>
+        <span class="event-stat-value">Free — Optional $20 donation to NYC Skeptics</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     REGISTRATION TYPE CARDS
+     ============================================================ -->
+<section class="reg-types-section" aria-labelledby="reg-types-heading">
+  <div class="container container--standard">
+
+    <header class="section-header reveal">
+      <p class="text-overline" style="margin-bottom:var(--space-sm);">Join Us</p>
+      <h2 id="reg-types-heading">How do you want to participate?</h2>
+      <p>Everyone is welcome. Choose your role — you can always change your mind later.</p>
+    </header>
+
+    <div class="reg-cards-grid reveal-stagger">
+
+      <!-- Attendee card -->
+      <a href="/register/attendee/" class="reg-card reg-card--attendee reveal" aria-label="Register as an attendee">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Attend</div>
+          <p class="reg-card-desc">
+            Come curious. Listen to talks on skepticism, science, and critical thinking.
+            Meet like-minded New Yorkers in a warm, welcoming environment.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Attendee benefits">
+          <li class="reg-card-feature">Free admission</li>
+          <li class="reg-card-feature">In-person or online</li>
+          <li class="reg-card-feature">Light refreshments</li>
+          <li class="reg-card-feature">Networking opportunities</li>
+        </ul>
+        <span class="btn btn-primary btn-md" aria-hidden="true">Register as Attendee</span>
+      </a>
+
+      <!-- Presenter card -->
+      <a href="/register/presenter/" class="reg-card reg-card--presenter reveal" aria-label="Register as a presenter">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Present a Talk</div>
+          <p class="reg-card-desc">
+            Share your passion. Give a 15 or 30-minute talk on any topic touching science,
+            skepticism, or critical thinking. No credentials required.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Presenter benefits">
+          <li class="reg-card-feature">15 or 30-minute slots</li>
+          <li class="reg-card-feature">A/V support provided</li>
+          <li class="reg-card-feature">Remote presenting available</li>
+          <li class="reg-card-feature">All backgrounds welcome</li>
+        </ul>
+        <span class="btn btn-secondary-accent btn-md" aria-hidden="true">Propose a Talk</span>
+      </a>
+
+      <!-- Volunteer card -->
+      <a href="/register/volunteer/" class="reg-card reg-card--volunteer reveal" aria-label="Register as a volunteer">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Volunteer</div>
+          <p class="reg-card-desc">
+            Help make it happen. We need friendly, organized people to help with
+            registration, A/V, setup, and making everyone feel welcome.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Volunteer benefits">
+          <li class="reg-card-feature">Multiple roles available</li>
+          <li class="reg-card-feature">Full day or shifts</li>
+          <li class="reg-card-feature">Training provided</li>
+          <li class="reg-card-feature">Free admission included</li>
+        </ul>
+        <span class="btn btn-md" style="background:var(--state-success); color:#fff;" aria-hidden="true">Volunteer</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT TEASER STRIP
+     ============================================================ -->
+<section class="about-strip" id="about-strip" aria-labelledby="about-strip-heading">
+  <div class="about-strip-grid">
+
+    <div class="reveal">
+      <p class="text-overline" style="margin-bottom:var(--space-sm);">About Skepticamp</p>
+      <h2 id="about-strip-heading" style="margin-bottom:var(--space-md);">Science. Curiosity.<br>Community.</h2>
+      <p style="font-size:1.0625rem; line-height:1.8; margin-bottom:var(--space-lg);">
+        Skepticamp NYC is a free, community-organized event for people who love asking questions.
+        Anyone can present — no credentials, no gatekeeping. Just a microphone and an audience
+        eager to learn.
+      </p>
+      <p style="font-size:1.0625rem; line-height:1.8; margin-bottom:var(--space-xl);">
+        We've been gathering since 2009. Every year brings new voices, new topics,
+        and the same spirit of open-minded inquiry.
+      </p>
+      <a href="/about/" class="btn btn-secondary btn-md">Learn More About Us</a>
+    </div>
+
+    <!-- Constellation grid decoration -->
+    <div class="reveal" style="display:flex; align-items:center; justify-content:center;">
+      <div class="constellation-grid-mount" aria-hidden="true" style="width:280px; height:280px;"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAST EVENTS STRIP
+     ============================================================ -->
+<section class="past-events-strip" aria-labelledby="past-events-heading">
+  <div class="container container--standard">
+    <p class="text-overline" style="margin-bottom:var(--space-sm);">Since 2009</p>
+    <h2 id="past-events-heading" style="font-size:1.75rem; margin-bottom:0;">
+      15+ Years of Skepticamp NYC
+    </h2>
+    <div class="year-pills" role="list" aria-label="Past Skepticamp NYC years">
+      {% for year in past_years %}
+      <span class="year-pill" role="listitem">{{ year }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Hero entrance — trigger animations after DOM ready
+  document.addEventListener('DOMContentLoaded', function () {
+    // Hero elements are CSS-animated via .hero-animate; already running.
+    // Year pills: add a small stagger
+    var pills = document.querySelectorAll('.year-pill');
+    pills.forEach(function (pill, i) {
+      pill.style.opacity = '0';
+      pill.style.transform = 'translateY(8px)';
+      setTimeout(function () {
+        pill.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        pill.style.opacity = '1';
+        pill.style.transform = 'none';
+      }, 600 + i * 30);
+    });
+  });
+</script>
+{% endblock %}

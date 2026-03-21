@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About — Skepticamp NYC{% endblock %}
+{% block meta_description %}Learn about Skepticamp NYC, a free community unconference exploring science, critical thinking, and consumer protection since 2009.{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="about-hero" aria-labelledby="about-hero-heading">
+  <div style="position:relative; z-index:1; max-width:760px; margin:0 auto;">
+    <p class="text-overline hero-animate" style="margin-bottom:var(--space-md);">About Skepticamp NYC</p>
+    <h1 id="about-hero-heading" class="hero-animate" style="font-size:3rem; color:var(--text-primary); margin-bottom:var(--space-lg);">
+      Where Curiosity<br>Gets a Microphone
+    </h1>
+    <p class="hero-animate" style="font-size:1.125rem; color:var(--text-secondary); max-width:600px; margin:0 auto; line-height:1.75;">
+      Skepticamp NYC is a free, one-day unconference where anyone can present a 15 or 30-minute talk
+      on topics touching science, skepticism, or critical thinking. No credentials required.
+      Just bring your curiosity and an idea worth sharing.
+    </p>
+  </div>
+</section>
+
+<!-- Main about content -->
+<section aria-label="About Skepticamp NYC">
+  <div class="about-content">
+
+    <p>
+      Skepticamp NYC has been gathering curious New Yorkers since 2009. What started as
+      a small gathering of skeptics, scientists, and science enthusiasts has grown into
+      one of New York City's most beloved annual intellectual events.
+    </p>
+
+    <p>
+      The unconference format means there's no hierarchy of speakers. The person who
+      gives the opening talk might be a PhD researcher — or a passionate hobbyist who
+      spent six months debunking a popular myth. Both are equally welcome. Both are
+      equally valued.
+    </p>
+
+    <p>
+      We're organized by the <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer">New York City Skeptics</a>,
+      a non-profit dedicated to promoting science literacy and critical thinking in
+      the five boroughs and beyond. The event is free — always has been, always will be.
+      We accept optional donations to cover venue costs and keep the lights on.
+    </p>
+
+    <p>
+      Past talks have covered everything from vaccine science to astrology debunking,
+      from the psychology of conspiracy theories to the history of the FDA. If it involves
+      evidence-based reasoning, you'll find it here.
+    </p>
+
+  </div>
+</section>
+
+<!-- Values section -->
+<section style="background:var(--bg-card); border-top:1px solid var(--border-default); border-bottom:1px solid var(--border-default);" aria-labelledby="values-heading">
+  <div class="container container--standard" style="padding:var(--space-3xl) var(--space-lg);">
+    <header class="section-header reveal" style="margin-bottom:var(--space-2xl);">
+      <p class="text-overline" style="margin-bottom:var(--space-sm);">What We Stand For</p>
+      <h2 id="values-heading">Our Values</h2>
+    </header>
+
+    <div class="about-values-grid">
+
+      <div class="card value-card reveal">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="value-title">Openness</div>
+        <p class="value-desc">
+          All perspectives are welcome as long as they engage honestly with evidence.
+          We don't require credentials — we require intellectual honesty.
+        </p>
+      </div>
+
+      <div class="card value-card reveal">
+        <div class="value-icon" style="color:var(--accent-secondary);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <div class="value-title">Community</div>
+        <p class="value-desc">
+          We're not a lecture hall — we're a gathering of peers. Every attendee
+          is also a potential presenter. The best conversations happen in the hallways.
+        </p>
+      </div>
+
+      <div class="card value-card reveal">
+        <div class="value-icon" style="color:var(--state-success);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <div class="value-title">Evidence</div>
+        <p class="value-desc">
+          We celebrate skepticism — not cynicism. We follow the evidence wherever
+          it leads, even when it challenges our priors. Especially then.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Code of conduct teaser -->
+<section aria-label="Code of conduct" style="padding:var(--space-3xl) var(--space-lg);">
+  <div class="container--narrow" style="margin:0 auto; text-align:center;">
+    <p class="text-overline reveal" style="margin-bottom:var(--space-sm);">Safe Space for Ideas</p>
+    <h2 class="reveal" style="margin-bottom:var(--space-md);">Code of Conduct</h2>
+    <p class="reveal" style="font-size:1.0625rem; line-height:1.8; margin-bottom:var(--space-xl);">
+      All participants are expected to engage respectfully. We do not tolerate harassment
+      or discrimination of any kind. Disagreement is healthy; disrespect is not.
+      By registering, you agree to uphold these standards.
+    </p>
+    <div class="reveal">
+      <a href="/register/" class="btn btn-primary btn-lg">Register for Skepticamp NYC 2025</a>
+    </div>
+  </div>
+</section>
+
+<!-- Event details card -->
+{% if event %}
+<section style="background:var(--bg-card); border-top:1px solid var(--border-default); padding:var(--space-3xl) var(--space-lg);" aria-label="Event logistics">
+  <div class="container--narrow" style="margin:0 auto;">
+    <p class="text-overline" style="margin-bottom:var(--space-sm); text-align:center;">December 6, 2025</p>
+    <h2 style="text-align:center; margin-bottom:var(--space-2xl);">Event Details</h2>
+    <div class="card reveal">
+      <dl style="display:grid; gap:var(--space-md);">
+        <div style="display:flex; justify-content:space-between; padding-bottom:var(--space-sm); border-bottom:1px solid var(--border-subtle);">
+          <dt style="font-weight:600; color:var(--text-secondary);">Date</dt>
+          <dd style="color:var(--text-primary);">{{ event.date|date:"l, F j, Y" }}</dd>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding-bottom:var(--space-sm); border-bottom:1px solid var(--border-subtle);">
+          <dt style="font-weight:600; color:var(--text-secondary);">Time</dt>
+          <dd style="color:var(--text-primary);">{{ event.start_time|time:"g:i A" }} – {{ event.end_time|time:"g:i A" }} EST</dd>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding-bottom:var(--space-sm); border-bottom:1px solid var(--border-subtle);">
+          <dt style="font-weight:600; color:var(--text-secondary);">Venue</dt>
+          <dd style="color:var(--text-primary); text-align:right;">{{ event.venue_name }}<br>{{ event.venue_address }}<br>{{ event.venue_city }}</dd>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <dt style="font-weight:600; color:var(--text-secondary);">Cost</dt>
+          <dd style="color:var(--text-primary);">Free — optional $20 donation</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

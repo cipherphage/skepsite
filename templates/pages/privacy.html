@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy — Skepticamp NYC{% endblock %}
+{% block meta_description %}Skepticamp NYC privacy policy — how we collect, use, and protect your personal data.{% endblock %}
+
+{% block content %}
+<section class="privacy-section">
+
+  <p class="text-overline" style="margin-bottom:var(--space-sm);">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:var(--space-2xl);">
+    Last updated: March 2026
+  </p>
+
+  <p>
+    New York City Skeptics ("we," "us," or "our") operates the Skepticamp NYC registration website
+    at skepticampnyc.org. This privacy policy explains what personal data we collect, why we collect it,
+    and your rights regarding that data.
+  </p>
+
+  <p>
+    We take your privacy seriously. We do not sell your data. We do not share it with third parties
+    for marketing purposes. We collect only what we need to organize the event.
+  </p>
+
+  <h2>What Data We Collect</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Data Points</th>
+        <th>Purpose</th>
+        <th>Retention</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Registration</td>
+        <td>Name, email, phone (optional), registration type, attendance format</td>
+        <td>Event management, confirmation emails, capacity planning</td>
+        <td>3 years after the event</td>
+      </tr>
+      <tr>
+        <td>Presenter info</td>
+        <td>Talk title, description, bio, AV needs</td>
+        <td>Schedule planning, program production</td>
+        <td>3 years after the event</td>
+      </tr>
+      <tr>
+        <td>Accessibility</td>
+        <td>Dietary needs, accessibility requirements</td>
+        <td>Event logistics, accessibility accommodations</td>
+        <td>Deleted after the event</td>
+      </tr>
+      <tr>
+        <td>Technical</td>
+        <td>IP address (at registration time)</td>
+        <td>Spam prevention, security</td>
+        <td>90 days</td>
+      </tr>
+      <tr>
+        <td>Preferences</td>
+        <td>Theme preference (localStorage only)</td>
+        <td>Improve your experience</td>
+        <td>Until you clear your browser data</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Legal Basis for Processing</h2>
+
+  <p>
+    We process your registration data under the legal basis of <strong>contract</strong>:
+    you provide your information to register for an event, and we need it to fulfill that registration.
+    We also rely on your explicit <strong>consent</strong> (the GDPR checkbox during registration)
+    for sending confirmation emails and event communications.
+  </p>
+
+  <h2>Your Rights</h2>
+
+  <p>Under GDPR and CCPA, you have the right to:</p>
+  <ul style="list-style:disc; padding-left:var(--space-lg);">
+    <li>Access the personal data we hold about you</li>
+    <li>Request correction of inaccurate data</li>
+    <li>Request deletion of your data ("right to be forgotten")</li>
+    <li>Withdraw consent at any time</li>
+    <li>Object to processing</li>
+    <li>Data portability (receive your data in a common format)</li>
+  </ul>
+
+  <p>
+    To exercise any of these rights, email us at
+    <a href="mailto:admin@skepticampnyc.org">admin@skepticampnyc.org</a>.
+    We will respond within 30 days.
+  </p>
+
+  <h2>Cookies</h2>
+
+  <p>We use the following cookies and browser storage:</p>
+  <ul style="list-style:disc; padding-left:var(--space-lg);">
+    <li><strong>skepcamp_theme</strong> (localStorage): Stores your light/dark mode preference. Never transmitted to our servers. You can opt out via the theme toggle.</li>
+    <li><strong>skepcamp_cookie_consent</strong> (localStorage): Stores your cookie consent decision. Required for this banner to function.</li>
+    <li><strong>Django session cookie</strong>: Required for the registration form to function. Expires when you close your browser.</li>
+    <li><strong>Django CSRF token</strong>: Required for form security. Not used for tracking.</li>
+  </ul>
+
+  <p>
+    We do not use advertising cookies or third-party tracking cookies without your explicit consent.
+    If you decline cookies in the consent banner, no analytics or non-essential cookies will be set.
+  </p>
+
+  <h2>Data Security</h2>
+
+  <p>
+    All data is transmitted over HTTPS. We use industry-standard PostgreSQL with encryption at rest.
+    Access to the database is restricted to authorized administrators with multi-factor authentication.
+    We conduct regular security reviews.
+  </p>
+
+  <h2>Contact</h2>
+
+  <p>
+    For privacy questions or to exercise your rights, contact:
+  </p>
+
+  <p>
+    <strong>New York City Skeptics</strong><br>
+    Email: <a href="mailto:admin@skepticampnyc.org">admin@skepticampnyc.org</a><br>
+    Website: <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer">nycskeptics.org</a>
+  </p>
+
+</section>
+{% endblock %}

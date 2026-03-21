@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register — Skepticamp NYC{% endblock %}
+{% block meta_description %}Register for Skepticamp NYC 2025 as an attendee, presenter, or volunteer.{% endblock %}
+
+{% block content %}
+<section class="gateway-section" aria-labelledby="gateway-heading">
+  <div class="container container--standard">
+
+    <header class="gateway-header reveal">
+      <p class="text-overline" style="margin-bottom:var(--space-sm);">Skepticamp NYC 2025</p>
+      <h1 id="gateway-heading">How would you like to participate?</h1>
+      <p style="font-size:1.125rem; margin-top:var(--space-md);">
+        Choose your role — you can always update your registration later.
+      </p>
+      {% if event %}
+      <p style="margin-top:var(--space-sm);">
+        <span class="badge badge--neutral badge--lg">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          {{ event.date|date:"F j, Y" }} &middot; Free
+        </span>
+      </p>
+      {% endif %}
+    </header>
+
+    <div class="reg-cards-grid" style="margin-top:var(--space-2xl);">
+
+      <!-- Attendee -->
+      <a href="/register/attendee/" class="reg-card reg-card--attendee reveal" aria-label="Register as an attendee">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Attend</div>
+          <p class="reg-card-desc">
+            Spend the day listening to fascinating talks from your fellow New Yorkers.
+            Ask questions, meet people, and enjoy a day of intellectual community.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Attendee details">
+          <li class="reg-card-feature">Free admission</li>
+          <li class="reg-card-feature">In-person or online options</li>
+          <li class="reg-card-feature">Takes about 3 minutes to register</li>
+        </ul>
+        <span class="btn btn-primary btn-md" aria-hidden="true">
+          Register as Attendee &rarr;
+        </span>
+      </a>
+
+      <!-- Presenter -->
+      <a href="/register/presenter/" class="reg-card reg-card--presenter reveal" aria-label="Register as a presenter">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Present a Talk</div>
+          <p class="reg-card-desc">
+            Have something to share? Give a 15 or 30-minute presentation.
+            Any topic at the intersection of science, skepticism, or critical thinking.
+            No credentials needed.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Presenter details">
+          <li class="reg-card-feature">15 or 30-minute slots</li>
+          <li class="reg-card-feature">A/V and remote options</li>
+          <li class="reg-card-feature">Takes about 5 minutes to register</li>
+        </ul>
+        <span class="btn btn-secondary-accent btn-md" aria-hidden="true">
+          Propose a Talk &rarr;
+        </span>
+      </a>
+
+      <!-- Volunteer -->
+      <a href="/register/volunteer/" class="reg-card reg-card--volunteer reveal" aria-label="Register as a volunteer">
+        <div class="reg-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reg-card-title">Volunteer</div>
+          <p class="reg-card-desc">
+            We couldn't do this without you. Help with registration, A/V, setup,
+            and creating a welcoming environment for all attendees.
+          </p>
+        </div>
+        <ul class="reg-card-features" aria-label="Volunteer details">
+          <li class="reg-card-feature">Multiple roles available</li>
+          <li class="reg-card-feature">Full day or half day</li>
+          <li class="reg-card-feature">Takes about 3 minutes to register</li>
+        </ul>
+        <span class="btn btn-md" style="background:var(--state-success); color:#fff;" aria-hidden="true">
+          Volunteer &rarr;
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

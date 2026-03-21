@@ -1,0 +1,71 @@
+<nav class="nav nav--at-top" id="main-nav" aria-label="Main navigation">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; height:100%; max-width:1280px; margin:0 auto; padding:0 var(--space-lg);">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Skepticamp NYC — home">
+      <span class="nav-logo-name">
+        <span class="nav-logo-s">S</span>kepticamp
+      </span>
+      <span class="nav-logo-city">NYC</span>
+    </a>
+
+    <!-- Center: nav links (desktop) -->
+    <ul class="nav-links" role="list">
+      <li>
+        <a href="/" class="nav-link {% if request.path == '/' %}nav-link--active{% endif %}"
+           {% if request.path == '/' %}aria-current="page"{% endif %}>Home</a>
+      </li>
+      <li>
+        <a href="/about/" class="nav-link {% if '/about' in request.path %}nav-link--active{% endif %}"
+           {% if '/about' in request.path %}aria-current="page"{% endif %}>About</a>
+      </li>
+      <li>
+        <a href="/contact/" class="nav-link {% if '/contact' in request.path %}nav-link--active{% endif %}"
+           {% if '/contact' in request.path %}aria-current="page"{% endif %}>Contact</a>
+      </li>
+    </ul>
+
+    <!-- Right: theme toggle + register CTA + hamburger -->
+    <div class="nav-right">
+      <!-- Theme toggle Vue mount -->
+      <div id="theme-toggle-mount" aria-label="Theme toggle"></div>
+
+      <a href="/register/" class="btn btn-primary btn-sm">Register</a>
+
+      <button class="hamburger-btn" id="hamburger-btn"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              aria-label="Open navigation menu">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Navigation menu"
+     class="mobile-menu"
+     hidden>
+  <button class="modal-close" style="position:absolute; top:var(--space-md); right:var(--space-lg);"
+          onclick="document.getElementById('hamburger-btn').click()"
+          aria-label="Close navigation menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <ul class="mobile-menu-links" role="list">
+    <li><a href="/" class="mobile-menu-link">Home</a></li>
+    <li><a href="/about/" class="mobile-menu-link">About</a></li>
+    <li><a href="/contact/" class="mobile-menu-link">Contact</a></li>
+  </ul>
+
+  <div class="mobile-menu-register">
+    <a href="/register/" class="btn btn-primary btn-lg btn-full">Register Now</a>
+  </div>
+</div>
