@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- Compact logo mark: apple of knowledge -->
+  <path d="M20 6c-2.5 0-4 1.2-5 3-1-1.8-3-2.5-5-1.5-3.5 1.8-4.5 6-2 9.5C11 22 16 28 19.2 32.5l.8 1 .8-1C24 28 29 22 32 17c2.5-3.5 1.5-7.7-2-9.5-2-1-4-.3-5 1.5-1-1.8-2.5-3-5-3z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M20 6c0-2.5 2-5 5-5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M23 1.5c1.5-.3 3 .5 3.5 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Magnifying glass (skepticism) overlapping apple -->
+  <circle cx="22" cy="18" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <line x1="26.5" y1="22.5" x2="30" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- Question mark inside magnifying glass -->
+  <text x="22" y="21" text-anchor="middle" font-family="'DM Serif Display', Georgia, serif" font-size="10" fill="currentColor">?</text>
+</svg>

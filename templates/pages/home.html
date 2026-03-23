@@ -48,9 +48,19 @@
       </a>
     </div>
 
+    <!-- 5. Hero illustration (decorative) -->
+    <div class="hero-illustration-wrap" aria-hidden="true">
+      <img src="{% static 'images/hero-illustration.svg' %}"
+           alt=""
+           class="hero-illustration"
+           width="600"
+           height="400"
+           loading="eager">
+    </div>
+
   </div>
 
-  <!-- 5. Scroll indicator -->
+  <!-- 6. Scroll indicator -->
   <div class="scroll-indicator-wrap" aria-hidden="true">
     <svg class="scroll-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"/>
@@ -237,9 +247,14 @@
       <a href="/about/" class="btn btn-secondary btn-md">Learn More About Us</a>
     </div>
 
-    <!-- Constellation grid decoration -->
+    <!-- Community illustration -->
     <div class="reveal" style="display:flex; align-items:center; justify-content:center;">
-      <div class="constellation-grid-mount" aria-hidden="true" style="width:280px; height:280px;"></div>
+      <img src="{% static 'images/community-illustration.svg' %}"
+           alt="Illustration of a connected community of people sharing ideas"
+           class="about-teaser-illustration"
+           width="360"
+           height="360"
+           loading="lazy">
     </div>
 
   </div>
@@ -251,6 +266,14 @@
      ============================================================ -->
 <section class="past-events-strip" aria-labelledby="past-events-heading">
   <div class="container container--standard">
+    <div class="past-events-skyline" aria-hidden="true">
+      <img src="{% static 'images/event-photo-illustration.svg' %}"
+           alt=""
+           class="past-events-skyline-img"
+           width="480"
+           height="320"
+           loading="lazy">
+    </div>
     <p class="text-overline" style="margin-bottom:var(--space-sm);">Since 2009</p>
     <h2 id="past-events-heading" style="font-size:1.75rem; margin-bottom:0;">
       15+ Years of Skepticamp NYC

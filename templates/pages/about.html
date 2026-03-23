@@ -25,6 +25,16 @@
 <section aria-label="About Skepticamp NYC">
   <div class="about-content">
 
+    <!-- Timeline illustration -->
+    <div class="about-timeline-wrap reveal">
+      <img src="{% static 'images/about-history.svg' %}"
+           alt="Timeline showing Skepticamp NYC growth from 2009 to 2025"
+           class="about-timeline-img"
+           width="480"
+           height="200"
+           loading="lazy">
+    </div>
+
     <p>
       Skepticamp NYC has been gathering curious New Yorkers since 2009. What started as
       a small gathering of skeptics, scientists, and science enthusiasts has grown into
@@ -38,8 +48,26 @@
       equally valued.
     </p>
 
+    <!-- Community illustration -->
+    <div class="about-community-wrap reveal">
+      <img src="{% static 'images/community-illustration.svg' %}"
+           alt="Illustration of diverse community members connecting and sharing ideas"
+           class="about-community-img"
+           width="400"
+           height="400"
+           loading="lazy">
+    </div>
+
     <p>
-      We're organized by the <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer">New York City Skeptics</a>,
+      We're organized by the
+      <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer" class="about-org-link">
+        <img src="{% static 'images/nyc-skeptics-logo.svg' %}"
+             alt="NYC Skeptics"
+             class="about-org-logo"
+             width="140"
+             height="34"
+             loading="lazy">
+        New York City Skeptics</a>,
       a non-profit dedicated to promoting science literacy and critical thinking in
       the five boroughs and beyond. The event is free — always has been, always will be.
       We accept optional donations to cover venue costs and keep the lights on.
