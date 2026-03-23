@@ -3,6 +3,7 @@ import ThemeToggle from './components/ThemeToggle.vue'
 import CookieConsent from './components/CookieConsent.vue'
 import RegistrationWizard from './components/RegistrationWizard.vue'
 import ConstellationGrid from './components/ConstellationGrid.vue'
+import DonationCallout from './components/DonationCallout.vue'
 
 // Mount theme toggle
 const themeToggleEl = document.getElementById('theme-toggle-mount')
@@ -30,4 +31,10 @@ if (wizardEl) {
 // Mount constellation grids
 document.querySelectorAll('.constellation-grid-mount').forEach((el) => {
   createApp(ConstellationGrid).mount(el)
+})
+
+// Mount donation callouts
+document.querySelectorAll('[id^="donation-callout-"]').forEach((el) => {
+  const variant = el.dataset.variant || 'full'
+  createApp(DonationCallout, { variant }).mount(el)
 })

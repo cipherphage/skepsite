@@ -167,6 +167,25 @@ const howHeardOptions = [
                 placeholder="Anything else we should know? Special skills, limitations, questions?">
       </textarea>
     </div>
+
+    <div class="form-group">
+      <label for="v-donation" class="form-label">Optional Donation</label>
+      <div style="display:flex; align-items:center; gap:0;">
+        <span style="height:44px; display:flex; align-items:center; padding:0 12px; background:var(--bg-card); border:1px solid var(--border-default); border-right:none; border-radius:var(--radius-md) 0 0 var(--radius-md); color:var(--text-muted); font-size:1rem;">$</span>
+        <input
+          id="v-donation"
+          type="number"
+          class="form-input"
+          :value="formData.donation_amount"
+          @input="update('donation_amount', $event.target.value)"
+          style="border-radius:0 var(--radius-md) var(--radius-md) 0;"
+          placeholder="20"
+          min="1"
+          max="500"
+        >
+      </div>
+      <p class="form-help">100% of donations support NYC Skeptics events. Completely optional.</p>
+    </div>
   </div>
 
   <!-- Step 3: Review & Submit -->
@@ -190,9 +209,13 @@ const howHeardOptions = [
           <dt style="color:var(--text-muted); font-size:0.875rem;">Roles</dt>
           <dd style="color:var(--text-primary); font-weight:500; text-align:right;">{{ formData.volunteer_roles.join(', ') }}</dd>
         </div>
-        <div style="display:flex; justify-content:space-between;">
+        <div style="display:flex; justify-content:space-between;" :style="formData.donation_amount ? 'padding-bottom:var(--space-sm); border-bottom:1px solid var(--border-subtle);' : ''">
           <dt style="color:var(--text-muted); font-size:0.875rem;">Availability</dt>
           <dd style="color:var(--text-primary); font-weight:500;">{{ formData.volunteer_availability === 'full_day' ? 'Full day' : 'Specific shifts' }}</dd>
+        </div>
+        <div v-if="formData.donation_amount" style="display:flex; justify-content:space-between;">
+          <dt style="color:var(--text-muted); font-size:0.875rem;">Donation</dt>
+          <dd style="color:var(--text-primary); font-weight:500;">${{ formData.donation_amount }}</dd>
         </div>
       </dl>
     </div>
