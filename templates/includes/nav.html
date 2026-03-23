@@ -3,6 +3,13 @@
 
     <!-- Logo -->
     <a href="/" class="nav-logo" aria-label="Skepticamp NYC — home">
+      {% load static %}
+      <img src="{% static 'images/skepticamp-logo.svg' %}"
+           alt=""
+           aria-hidden="true"
+           class="nav-logo-img"
+           width="36"
+           height="36">
       <span class="nav-logo-name">
         <span class="nav-logo-s">S</span>kepticamp
       </span>

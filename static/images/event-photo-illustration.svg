@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" fill="none">
+  <!-- Event scene: NYC skyline silhouette with event venue highlighted -->
+  <defs>
+    <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4FAAFF" stop-opacity="0.04"/>
+      <stop offset="60%" stop-color="#C084FC" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#0D0F1A" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="venue-glow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#4FAAFF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#4FAAFF" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="480" height="320" rx="16" fill="url(#sky-grad)"/>
+
+  <!-- Stars -->
+  <circle cx="50" cy="30" r="1.5" fill="currentColor" opacity="0.15"/>
+  <circle cx="120" cy="50" r="1" fill="currentColor" opacity="0.1"/>
+  <circle cx="200" cy="20" r="1.5" fill="currentColor" opacity="0.12"/>
+  <circle cx="350" cy="40" r="1" fill="currentColor" opacity="0.15"/>
+  <circle cx="420" cy="25" r="1.5" fill="currentColor" opacity="0.1"/>
+  <circle cx="80" cy="70" r="1" fill="currentColor" opacity="0.08"/>
+  <circle cx="440" cy="65" r="1" fill="currentColor" opacity="0.12"/>
+
+  <!-- NYC Skyline silhouettes -->
+  <!-- Far buildings -->
+  <rect x="20" y="160" width="30" height="160" rx="2" fill="currentColor" opacity="0.06"/>
+  <rect x="55" y="140" width="25" height="180" rx="2" fill="currentColor" opacity="0.07"/>
+  <rect x="85" y="170" width="20" height="150" rx="2" fill="currentColor" opacity="0.05"/>
+  <rect x="110" y="130" width="35" height="190" rx="2" fill="currentColor" opacity="0.08"/>
+
+  <!-- Empire State-like spire -->
+  <rect x="148" y="80" width="30" height="240" rx="2" fill="currentColor" opacity="0.1"/>
+  <rect x="155" y="60" width="16" height="25" rx="1" fill="currentColor" opacity="0.1"/>
+  <rect x="160" y="40" width="6" height="22" rx="1" fill="currentColor" opacity="0.1"/>
+  <line x1="163" y1="20" x2="163" y2="42" stroke="currentColor" stroke-opacity="0.1" stroke-width="2"/>
+
+  <!-- More buildings -->
+  <rect x="185" y="150" width="28" height="170" rx="2" fill="currentColor" opacity="0.07"/>
+
+  <!-- VENUE building (highlighted) -->
+  <rect x="218" y="120" width="50" height="200" rx="4" fill="url(#venue-glow)" stroke="#4FAAFF" stroke-opacity="0.3" stroke-width="1.5"/>
+  <!-- Venue windows (lit up) -->
+  <rect x="226" y="135" width="8" height="8" rx="1" fill="#4FAAFF" opacity="0.5"/>
+  <rect x="238" y="135" width="8" height="8" rx="1" fill="#4FAAFF" opacity="0.4"/>
+  <rect x="250" y="135" width="8" height="8" rx="1" fill="#4FAAFF" opacity="0.5"/>
+  <rect x="226" y="150" width="8" height="8" rx="1" fill="#FBBF24" opacity="0.4"/>
+  <rect x="238" y="150" width="8" height="8" rx="1" fill="#FBBF24" opacity="0.5"/>
+  <rect x="250" y="150" width="8" height="8" rx="1" fill="#FBBF24" opacity="0.3"/>
+  <rect x="226" y="165" width="8" height="8" rx="1" fill="#4FAAFF" opacity="0.3"/>
+  <rect x="238" y="165" width="8" height="8" rx="1" fill="#C084FC" opacity="0.4"/>
+  <rect x="250" y="165" width="8" height="8" rx="1" fill="#4FAAFF" opacity="0.5"/>
+  <!-- Venue label -->
+  <rect x="220" y="185" width="46" height="14" rx="7" fill="#4FAAFF" opacity="0.2"/>
+  <text x="243" y="195" text-anchor="middle" font-family="'Inter', sans-serif" font-size="7" fill="#4FAAFF" opacity="0.8">VENUE</text>
+
+  <!-- More buildings right side -->
+  <rect x="275" y="145" width="25" height="175" rx="2" fill="currentColor" opacity="0.07"/>
+  <rect x="305" y="120" width="35" height="200" rx="2" fill="currentColor" opacity="0.09"/>
+  <rect x="345" y="155" width="22" height="165" rx="2" fill="currentColor" opacity="0.06"/>
+  <rect x="372" y="135" width="30" height="185" rx="2" fill="currentColor" opacity="0.08"/>
+  <rect x="407" y="160" width="25" height="160" rx="2" fill="currentColor" opacity="0.06"/>
+  <rect x="437" y="145" width="30" height="175" rx="2" fill="currentColor" opacity="0.07"/>
+
+  <!-- Ground -->
+  <rect x="0" y="310" width="480" height="10" rx="0" fill="currentColor" opacity="0.04"/>
+
+  <!-- Glow effect from venue -->
+  <ellipse cx="243" cy="120" rx="40" ry="30" fill="#4FAAFF" opacity="0.06"/>
+</svg>

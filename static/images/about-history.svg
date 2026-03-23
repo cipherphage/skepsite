@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none">
+  <!-- About page: Timeline illustration showing growth since 2009 -->
+  <defs>
+    <linearGradient id="timeline-grad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#4FAAFF" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#C084FC" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Timeline line -->
+  <line x1="40" y1="100" x2="440" y2="100" stroke="url(#timeline-grad)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Year markers with growing circles (showing growth) -->
+  <!-- 2009 -->
+  <circle cx="60" cy="100" r="8" fill="#4FAAFF" opacity="0.2" stroke="#4FAAFF" stroke-opacity="0.4" stroke-width="1"/>
+  <circle cx="60" cy="100" r="3" fill="#4FAAFF" opacity="0.6"/>
+  <text x="60" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="currentColor" opacity="0.5">2009</text>
+
+  <!-- 2012 -->
+  <circle cx="130" cy="100" r="11" fill="#4FAAFF" opacity="0.15" stroke="#4FAAFF" stroke-opacity="0.3" stroke-width="1"/>
+  <circle cx="130" cy="100" r="4" fill="#4FAAFF" opacity="0.5"/>
+  <text x="130" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="currentColor" opacity="0.5">2012</text>
+
+  <!-- 2015 -->
+  <circle cx="200" cy="100" r="14" fill="#C084FC" opacity="0.15" stroke="#C084FC" stroke-opacity="0.3" stroke-width="1"/>
+  <circle cx="200" cy="100" r="5" fill="#C084FC" opacity="0.5"/>
+  <text x="200" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="currentColor" opacity="0.5">2015</text>
+
+  <!-- 2018 -->
+  <circle cx="270" cy="100" r="17" fill="#C084FC" opacity="0.15" stroke="#C084FC" stroke-opacity="0.3" stroke-width="1"/>
+  <circle cx="270" cy="100" r="6" fill="#C084FC" opacity="0.5"/>
+  <text x="270" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="currentColor" opacity="0.5">2018</text>
+
+  <!-- 2021 -->
+  <circle cx="340" cy="100" r="20" fill="#34D399" opacity="0.12" stroke="#34D399" stroke-opacity="0.3" stroke-width="1"/>
+  <circle cx="340" cy="100" r="7" fill="#34D399" opacity="0.5"/>
+  <text x="340" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="currentColor" opacity="0.5">2021</text>
+
+  <!-- 2025 (current, largest) -->
+  <circle cx="420" cy="100" r="24" fill="#4FAAFF" opacity="0.1" stroke="#4FAAFF" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="420" cy="100" r="8" fill="#4FAAFF" opacity="0.6"/>
+  <text x="420" y="130" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#4FAAFF" opacity="0.8">2025</text>
+
+  <!-- Labels above certain points -->
+  <text x="60" y="75" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" fill="currentColor" opacity="0.35">Founded</text>
+  <text x="420" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#4FAAFF" opacity="0.6">15+ Years</text>
+
+  <!-- Decorative arcs between points -->
+  <path d="M68 90 Q95 60 122 90" stroke="#4FAAFF" stroke-opacity="0.1" stroke-width="1" fill="none"/>
+  <path d="M138 90 Q165 65 192 90" stroke="#C084FC" stroke-opacity="0.1" stroke-width="1" fill="none"/>
+  <path d="M208 90 Q235 60 262 90" stroke="#C084FC" stroke-opacity="0.1" stroke-width="1" fill="none"/>
+  <path d="M278 90 Q305 55 332 90" stroke="#34D399" stroke-opacity="0.1" stroke-width="1" fill="none"/>
+  <path d="M348 90 Q380 50 412 90" stroke="#4FAAFF" stroke-opacity="0.12" stroke-width="1" fill="none"/>
+</svg>
