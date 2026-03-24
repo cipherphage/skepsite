@@ -9,7 +9,7 @@ const props = defineProps({
   },
 })
 
-const DONATION_URL = 'https://www.nycskeptics.org/donate'
+const PAYPAL_BUTTON_ID = '83MUR59PT8XBS'
 const presetAmounts = [10, 25, 50, 100]
 
 const selectedPreset = ref(null)
@@ -37,13 +37,33 @@ function onCustomInput(event) {
   }
 }
 
-const donateUrl = computed(() => {
+function submitDonation() {
+  // Build and submit a PayPal donate form programmatically.
+  const form = document.createElement('form')
+  form.action = 'https://www.paypal.com/donate'
+  form.method = 'post'
+  form.target = '_top'
+
+  const buttonInput = document.createElement('input')
+  buttonInput.type = 'hidden'
+  buttonInput.name = 'hosted_button_id'
+  buttonInput.value = PAYPAL_BUTTON_ID
+  form.appendChild(buttonInput)
+
+  // PayPal hosted buttons accept an 'amount' parameter
   const amount = donationAmount.value
-  if (amount) {
-    return `${DONATION_URL}?amount=${encodeURIComponent(amount)}`
+  if (amount && Number(amount) > 0) {
+    const amountInput = document.createElement('input')
+    amountInput.type = 'hidden'
+    amountInput.name = 'amount'
+    amountInput.value = String(amount)
+    form.appendChild(amountInput)
   }
-  return DONATION_URL
-})
+
+  form.style.display = 'none'
+  document.body.appendChild(form)
+  form.submit()
+}
 </script>
 
 <template>
@@ -98,18 +118,20 @@ const donateUrl = computed(() => {
           >
         </div>
 
-        <a
-          :href="donateUrl"
+        <button
+          type="button"
           class="btn btn-secondary-accent btn-lg donation-cta"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Donate to NYC Skeptics"
+          aria-label="Donate to NYC Skeptics via PayPal"
+          @click="submitDonation"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
-          Donate Now
-        </a>
+          Donate via PayPal
+        </button>
+        <p class="donation-callout-note" style="margin-top:var(--space-xs); text-align:center;">
+          You'll be securely redirected to PayPal to complete your donation.
+        </p>
       </div>
     </div>
   </div>
@@ -153,8 +175,18 @@ const donateUrl = computed(() => {
       >
     </div>
 
+    <button
+      type="button"
+      class="btn btn-secondary-accent btn-md donation-cta"
+      aria-label="Donate to NYC Skeptics via PayPal"
+      @click="submitDonation"
+    >
+      Donate via PayPal
+    </button>
+
     <p class="donation-callout-note" style="margin-top:var(--space-xs);">
       100% of donations support NYC Skeptics events. Completely optional.
+      You'll be securely redirected to PayPal.
     </p>
   </div>
 </template>

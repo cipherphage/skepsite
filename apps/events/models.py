@@ -12,6 +12,11 @@ class Event(models.Model):
     is_active = models.BooleanField(default=True)
     max_capacity = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
+    editing_deadline = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text='Deadline after which presenters can no longer edit their presentation details.',
+    )
 
     class Meta:
         ordering = ['-date']
@@ -32,3 +37,11 @@ class Event(models.Model):
     @property
     def full_venue_address(self) -> str:
         return f'{self.venue_address}, {self.venue_city}'
+
+    @property
+    def is_editing_open(self) -> bool:
+        """Return True if the editing deadline has not yet passed."""
+        if self.editing_deadline is None:
+            return True
+        from django.utils import timezone
+        return timezone.now() < self.editing_deadline

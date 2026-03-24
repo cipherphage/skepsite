@@ -118,6 +118,17 @@ html.light .btn-ghost:active:not([aria-disabled="true"]):not(:disabled) {
   color: var(--text-inverse);
 }
 
+.btn-success {
+  background: var(--state-success);
+  color: var(--text-inverse);
+}
+.btn-success:hover:not([aria-disabled="true"]):not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-glow-success);
+  transform: translateY(-1px);
+  color: var(--text-inverse);
+}
+
 /* Loading state */
 .btn[aria-busy="true"] {
   cursor: wait;

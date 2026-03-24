@@ -30,6 +30,10 @@
         <a href="/contact/" class="nav-link {% if '/contact' in request.path %}nav-link--active{% endif %}"
            {% if '/contact' in request.path %}aria-current="page"{% endif %}>Contact</a>
       </li>
+      <li>
+        <a href="/my-registration/" class="nav-link {% if '/my-registration' in request.path %}nav-link--active{% endif %}"
+           {% if '/my-registration' in request.path %}aria-current="page"{% endif %}>My Registration</a>
+      </li>
     </ul>
 
     <!-- Right: theme toggle + register CTA + hamburger -->
@@ -70,6 +74,7 @@
     <li><a href="/" class="mobile-menu-link">Home</a></li>
     <li><a href="/about/" class="mobile-menu-link">About</a></li>
     <li><a href="/contact/" class="mobile-menu-link">Contact</a></li>
+    <li><a href="/my-registration/" class="mobile-menu-link">My Registration</a></li>
   </ul>
 
   <div class="mobile-menu-register">

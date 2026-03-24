@@ -23,17 +23,17 @@ class HomePageTest(TestCase):
         response = self.client.get('/')
         self.assertContains(response, 'id="donation-callout-home"')
 
-    def test_homepage_contains_hero_illustration(self):
+    def test_homepage_contains_hero_photo(self):
         response = self.client.get('/')
-        self.assertContains(response, 'hero-illustration.svg')
+        self.assertContains(response, 'new-york-city-336475.webp')
 
-    def test_homepage_contains_community_illustration(self):
+    def test_homepage_contains_event_logo(self):
         response = self.client.get('/')
-        self.assertContains(response, 'community-illustration.svg')
+        self.assertContains(response, 'SkeptiCampNYC2025LogoSite.jpg')
 
-    def test_homepage_contains_skyline_illustration(self):
+    def test_homepage_contains_photo_ribbon(self):
         response = self.client.get('/')
-        self.assertContains(response, 'event-photo-illustration.svg')
+        self.assertContains(response, 'photo-ribbon')
 
     def test_homepage_contains_noscript_donation_fallback(self):
         response = self.client.get('/')

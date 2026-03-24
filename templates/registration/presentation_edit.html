@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Presentation — Skepticamp NYC{% endblock %}
+{% block meta_description %}Edit your Skepticamp NYC presentation details.{% endblock %}
+
+{% block content %}
+<section class="presentation-edit-section" aria-labelledby="edit-heading">
+  <div class="presentation-edit-container">
+
+    <a href="{% url 'registrant:dashboard' %}" style="display:inline-flex; align-items:center; gap:var(--space-xs); color:var(--text-secondary); text-decoration:none; font-size:0.875rem; margin-bottom:var(--space-lg);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Dashboard
+    </a>
+
+    <div class="presentation-edit-card">
+      <h1 id="edit-heading" class="presentation-edit-title">Edit Presentation</h1>
+      <p style="color:var(--text-secondary); margin-bottom:var(--space-lg);">
+        Update your talk details below. Changes are saved immediately.
+      </p>
+
+      {% if editing_deadline_iso %}
+      <div id="presentation-countdown-mount"
+           data-deadline="{{ editing_deadline_iso }}"
+           data-editing-open="true">
+      </div>
+      {% endif %}
+
+      {% if form.non_field_errors %}
+      <div class="form-error-banner" role="alert">
+        {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <form method="post" action="" novalidate class="presentation-edit-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="{{ form.talk_title.id_for_label }}" class="form-label">Talk title</label>
+          {{ form.talk_title }}
+          {% if form.talk_title.errors %}
+          <p class="form-field-error" role="alert">{{ form.talk_title.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.talk_description.id_for_label }}" class="form-label">Talk description</label>
+          {{ form.talk_description }}
+          {% if form.talk_description.errors %}
+          <p class="form-field-error" role="alert">{{ form.talk_description.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="{{ form.talk_duration.id_for_label }}" class="form-label">Duration</label>
+            {{ form.talk_duration }}
+            {% if form.talk_duration.errors %}
+            <p class="form-field-error" role="alert">{{ form.talk_duration.errors.0 }}</p>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.audience_level.id_for_label }}" class="form-label">Audience level</label>
+            {{ form.audience_level }}
+            {% if form.audience_level.errors %}
+            <p class="form-field-error" role="alert">{{ form.audience_level.errors.0 }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.bio.id_for_label }}" class="form-label">Bio</label>
+          {{ form.bio }}
+          {% if form.bio.errors %}
+          <p class="form-field-error" role="alert">{{ form.bio.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.affiliation.id_for_label }}" class="form-label">Affiliation</label>
+          {{ form.affiliation }}
+          {% if form.affiliation.errors %}
+          <p class="form-field-error" role="alert">{{ form.affiliation.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="presentation-edit-actions">
+          <a href="{% url 'registrant:dashboard' %}" class="btn btn-ghost btn-md">Cancel</a>
+          <button type="submit" class="btn btn-primary btn-md">Save Changes</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

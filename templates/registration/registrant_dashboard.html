@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Registration — Skepticamp NYC{% endblock %}
+{% block meta_description %}View your Skepticamp NYC registration details and manage your presentation.{% endblock %}
+
+{% block content %}
+<section class="dashboard-section" aria-labelledby="dashboard-heading">
+  <div class="dashboard-container">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div>
+        <h1 id="dashboard-heading" class="dashboard-title">My Registration</h1>
+        <p style="color:var(--text-secondary);">Welcome back, {{ registration.first_name }}.</p>
+      </div>
+      <form method="post" action="{% url 'registrant:logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-ghost btn-sm">Sign Out</button>
+      </form>
+    </header>
+
+    {% if messages %}
+    <div class="dashboard-messages" role="status">
+      {% for message in messages %}
+      <div class="dashboard-message dashboard-message--{{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Confirmation info -->
+    <div class="dashboard-card">
+      <h2 class="dashboard-card-title">Registration Details</h2>
+      <dl class="dashboard-details">
+        <div class="dashboard-detail-row">
+          <dt>Confirmation number</dt>
+          <dd class="confirmation-number">{{ registration.confirmation_number }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Name</dt>
+          <dd>{{ registration.full_name }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Email</dt>
+          <dd>{{ registration.email }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Registration type</dt>
+          <dd>
+            <span class="dashboard-badge dashboard-badge--{{ registration.registration_type }}">
+              {{ registration.get_registration_type_display }}
+            </span>
+          </dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Status</dt>
+          <dd>
+            <span class="dashboard-badge dashboard-badge--{{ registration.status }}">
+              {{ registration.get_status_display }}
+            </span>
+          </dd>
+        </div>
+        {% if registration.attendance_format %}
+        <div class="dashboard-detail-row">
+          <dt>Attendance format</dt>
+          <dd>{{ registration.get_attendance_format_display }}</dd>
+        </div>
+        {% endif %}
+        {% if registration.phone %}
+        <div class="dashboard-detail-row">
+          <dt>Phone</dt>
+          <dd>{{ registration.phone }}</dd>
+        </div>
+        {% endif %}
+        <div class="dashboard-detail-row">
+          <dt>Registered on</dt>
+          <dd>{{ registration.created_at|date:"F j, Y" }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Event info -->
+    {% if event %}
+    <div class="dashboard-card">
+      <h2 class="dashboard-card-title">Event Details</h2>
+      <dl class="dashboard-details">
+        <div class="dashboard-detail-row">
+          <dt>Event</dt>
+          <dd>{{ event.name }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Date</dt>
+          <dd>{{ event.date|date:"l, F j, Y" }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Time</dt>
+          <dd>{{ event.start_time|time:"g:i A" }} — {{ event.end_time|time:"g:i A" }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Venue</dt>
+          <dd>{{ event.venue_name }}<br><span style="color:var(--text-muted);">{{ event.full_venue_address }}</span></dd>
+        </div>
+      </dl>
+    </div>
+    {% endif %}
+
+    <!-- Presenter-specific: presentation details -->
+    {% if registration.registration_type == 'presenter' %}
+    <div class="dashboard-card">
+      <div class="dashboard-card-header">
+        <h2 class="dashboard-card-title">Presentation Details</h2>
+        {% if editing_open %}
+        <a href="{% url 'registrant:presentation-edit' %}" class="btn btn-primary btn-sm">
+          Edit Presentation
+        </a>
+        {% else %}
+        <span class="dashboard-badge dashboard-badge--locked" aria-label="Editing closed">
+          Editing closed
+        </span>
+        {% endif %}
+      </div>
+
+      <!-- Countdown timer mounts here (Vue) -->
+      {% if editing_deadline_iso %}
+      <div id="presentation-countdown-mount"
+           data-deadline="{{ editing_deadline_iso }}"
+           data-editing-open="{{ editing_open|yesno:'true,false' }}">
+      </div>
+      {% endif %}
+
+      <dl class="dashboard-details">
+        <div class="dashboard-detail-row">
+          <dt>Talk title</dt>
+          <dd>{{ registration.talk_title|default:"—" }}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Duration</dt>
+          <dd>{{ registration.talk_duration|default:"—" }} {% if registration.talk_duration %}minutes{% endif %}</dd>
+        </div>
+        <div class="dashboard-detail-row">
+          <dt>Audience level</dt>
+          <dd>{{ registration.audience_level|default:"—" }}</dd>
+        </div>
+        {% if registration.talk_description %}
+        <div class="dashboard-detail-row dashboard-detail-row--block">
+          <dt>Description</dt>
+          <dd>{{ registration.talk_description }}</dd>
+        </div>
+        {% endif %}
+        {% if registration.bio %}
+        <div class="dashboard-detail-row dashboard-detail-row--block">
+          <dt>Bio</dt>
+          <dd>{{ registration.bio }}</dd>
+        </div>
+        {% endif %}
+        {% if registration.affiliation %}
+        <div class="dashboard-detail-row">
+          <dt>Affiliation</dt>
+          <dd>{{ registration.affiliation }}</dd>
+        </div>
+        {% endif %}
+      </dl>
+    </div>
+    {% endif %}
+
+    <!-- Volunteer-specific details -->
+    {% if registration.registration_type == 'volunteer' %}
+    <div class="dashboard-card">
+      <h2 class="dashboard-card-title">Volunteer Details</h2>
+      <dl class="dashboard-details">
+        {% if registration.volunteer_roles %}
+        <div class="dashboard-detail-row">
+          <dt>Roles</dt>
+          <dd>{{ registration.volunteer_roles|join:", " }}</dd>
+        </div>
+        {% endif %}
+        {% if registration.volunteer_availability %}
+        <div class="dashboard-detail-row">
+          <dt>Availability</dt>
+          <dd>{{ registration.volunteer_availability }}</dd>
+        </div>
+        {% endif %}
+        {% if registration.volunteer_notes %}
+        <div class="dashboard-detail-row dashboard-detail-row--block">
+          <dt>Notes</dt>
+          <dd>{{ registration.volunteer_notes }}</dd>
+        </div>
+        {% endif %}
+      </dl>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

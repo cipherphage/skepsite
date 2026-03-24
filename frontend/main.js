@@ -4,6 +4,7 @@ import CookieConsent from './components/CookieConsent.vue'
 import RegistrationWizard from './components/RegistrationWizard.vue'
 import ConstellationGrid from './components/ConstellationGrid.vue'
 import DonationCallout from './components/DonationCallout.vue'
+import PresentationCountdown from './components/PresentationCountdown.vue'
 
 // Mount theme toggle
 const themeToggleEl = document.getElementById('theme-toggle-mount')
@@ -38,3 +39,12 @@ document.querySelectorAll('[id^="donation-callout-"]').forEach((el) => {
   const variant = el.dataset.variant || 'full'
   createApp(DonationCallout, { variant }).mount(el)
 })
+
+// Mount presentation countdown
+const countdownEl = document.getElementById('presentation-countdown-mount')
+if (countdownEl) {
+  createApp(PresentationCountdown, {
+    deadline: countdownEl.dataset.deadline,
+    editingOpen: countdownEl.dataset.editingOpen === 'true',
+  }).mount(countdownEl)
+}

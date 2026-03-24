@@ -6,10 +6,30 @@
 {% block content %}
 
 <!-- ============================================================
-     HERO SECTION
+     HERO SECTION — Full-bleed NYC cityscape with event logo
      ============================================================ -->
-<section class="hero" aria-labelledby="hero-headline">
+<section class="hero hero--photo" aria-labelledby="hero-headline">
+  <div class="hero-bg-wrap" aria-hidden="true">
+    <img src="{% static 'images/new-york-city-336475.webp' %}"
+         alt=""
+         class="hero-bg-img"
+         width="1920"
+         height="640"
+         loading="eager">
+    <div class="hero-bg-overlay"></div>
+  </div>
+
   <div class="hero-content">
+
+    <!-- Event logo -->
+    <div class="hero-animate hero-event-logo-wrap">
+      <img src="{% static 'images/SkeptiCampNYC2025LogoSite.jpg' %}"
+           alt="Skepticamp NYC 2025 — Share the Apple of Knowledge"
+           class="hero-event-logo"
+           width="480"
+           height="200"
+           loading="eager">
+    </div>
 
     <!-- 1. Overline badge -->
     <div class="hero-animate" style="margin-bottom:var(--space-lg);">
@@ -48,19 +68,9 @@
       </a>
     </div>
 
-    <!-- 5. Hero illustration (decorative) -->
-    <div class="hero-illustration-wrap" aria-hidden="true">
-      <img src="{% static 'images/hero-illustration.svg' %}"
-           alt=""
-           class="hero-illustration"
-           width="600"
-           height="400"
-           loading="eager">
-    </div>
-
   </div>
 
-  <!-- 6. Scroll indicator -->
+  <!-- Scroll indicator -->
   <div class="scroll-indicator-wrap" aria-hidden="true">
     <svg class="scroll-indicator" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"/>
@@ -115,6 +125,32 @@
 
 
 <!-- ============================================================
+     PHOTO HIGHLIGHT — Scrolling community snapshots ribbon
+     ============================================================ -->
+<section class="photo-ribbon" aria-label="Photos from past Skepticamp events">
+  <div class="photo-ribbon-track">
+    <img src="{% static 'images/2009-1.jpg' %}" alt="Engaged audience at Skepticamp NYC 2009" class="photo-ribbon-img" width="400" height="267" loading="eager">
+    <img src="{% static 'images/2010-5.jpg' %}" alt="Smiling attendees at Skepticamp NYC 2010" class="photo-ribbon-img" width="400" height="267" loading="eager">
+    <img src="{% static 'images/2011-1.jpg' %}" alt="Presenter speaking passionately at Skepticamp NYC 2011" class="photo-ribbon-img" width="400" height="267" loading="eager">
+    <img src="{% static 'images/2012-1.jpg' %}" alt="Speaker presenting on technical education at Skepticamp NYC 2012" class="photo-ribbon-img" width="400" height="267" loading="lazy">
+    <img src="{% static 'images/2010-1.jpg' %}" alt="Dynamic demonstration at Skepticamp NYC 2010" class="photo-ribbon-img" width="400" height="267" loading="lazy">
+    <img src="{% static 'images/2011-5.jpg' %}" alt="Presenter at Skepticamp NYC 2011 with event banner" class="photo-ribbon-img" width="400" height="267" loading="lazy">
+    <img src="{% static 'images/2012-3.jpg' %}" alt="Presenter with ukulele at Skepticamp NYC 2012" class="photo-ribbon-img" width="400" height="267" loading="lazy">
+    <img src="{% static 'images/2010-7.jpg' %}" alt="Community members at Skepticamp NYC 2010" class="photo-ribbon-img" width="400" height="267" loading="lazy">
+    <!-- Duplicated set for seamless infinite scroll -->
+    <img src="{% static 'images/2009-1.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2010-5.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2011-1.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2012-1.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2010-1.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2011-5.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2012-3.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+    <img src="{% static 'images/2010-7.jpg' %}" alt="" class="photo-ribbon-img" width="400" height="267" loading="lazy" aria-hidden="true">
+  </div>
+</section>
+
+
+<!-- ============================================================
      REGISTRATION TYPE CARDS
      ============================================================ -->
 <section class="reg-types-section" aria-labelledby="reg-types-heading">
@@ -129,7 +165,7 @@
     <div class="reg-cards-grid reveal-stagger">
 
       <!-- Attendee card -->
-      <a href="/register/attendee/" class="reg-card reg-card--attendee reveal" aria-label="Register as an attendee">
+      <a href="/register/attendee/" class="reg-card reg-card--attendee reveal">
         <div class="reg-card-icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -155,7 +191,7 @@
       </a>
 
       <!-- Presenter card -->
-      <a href="/register/presenter/" class="reg-card reg-card--presenter reveal" aria-label="Register as a presenter">
+      <a href="/register/presenter/" class="reg-card reg-card--presenter reveal">
         <div class="reg-card-icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="23 7 16 12 23 17 23 7"/>
@@ -179,7 +215,7 @@
       </a>
 
       <!-- Volunteer card -->
-      <a href="/register/volunteer/" class="reg-card reg-card--volunteer reveal" aria-label="Register as a volunteer">
+      <a href="/register/volunteer/" class="reg-card reg-card--volunteer reveal">
         <div class="reg-card-icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -198,7 +234,7 @@
           <li class="reg-card-feature">Training provided</li>
           <li class="reg-card-feature">Free admission included</li>
         </ul>
-        <span class="btn btn-md" style="background:var(--state-success); color:#fff;" aria-hidden="true">Volunteer</span>
+        <span class="btn btn-success btn-md" aria-hidden="true">Volunteer</span>
       </a>
 
     </div>
@@ -216,10 +252,12 @@
       <div style="text-align:center; padding:var(--space-3xl) var(--space-lg);">
         <h2 style="margin-bottom:var(--space-md);">Support Skepticamp NYC</h2>
         <p style="margin-bottom:var(--space-lg); color:var(--text-secondary);">
-          Skepticamp NYC is free thanks to generous donors.
-          <a href="https://www.nycskeptics.org/donate" target="_blank" rel="noopener noreferrer">Donate to NYC Skeptics</a>
-          to help keep it that way.
+          Skepticamp NYC is free thanks to generous donors. Your tax-deductible donation to NYC Skeptics helps keep it that way.
         </p>
+        <form action="https://www.paypal.com/donate" method="post" target="_top" style="display:inline-block;">
+          <input type="hidden" name="hosted_button_id" value="83MUR59PT8XBS">
+          <button type="submit" class="btn btn-secondary-accent btn-lg" style="cursor:pointer;">Donate via PayPal</button>
+        </form>
       </div>
     </noscript>
   </div>
@@ -227,7 +265,7 @@
 
 
 <!-- ============================================================
-     ABOUT TEASER STRIP
+     ABOUT TEASER STRIP — with real photo collage
      ============================================================ -->
 <section class="about-strip" id="about-strip" aria-labelledby="about-strip-heading">
   <div class="about-strip-grid">
@@ -247,14 +285,25 @@
       <a href="/about/" class="btn btn-secondary btn-md">Learn More About Us</a>
     </div>
 
-    <!-- Community illustration -->
-    <div class="reveal" style="display:flex; align-items:center; justify-content:center;">
-      <img src="{% static 'images/community-illustration.svg' %}"
-           alt="Illustration of a connected community of people sharing ideas"
-           class="about-teaser-illustration"
-           width="360"
-           height="360"
-           loading="lazy">
+    <!-- Photo collage replacing the SVG illustration -->
+    <div class="reveal about-teaser-collage">
+      <div class="collage-grid">
+        <img src="{% static 'images/2010-5.jpg' %}"
+             alt="Smiling audience members enjoying a presentation at Skepticamp NYC"
+             class="collage-img collage-img--lg"
+             width="400" height="267"
+             loading="lazy">
+        <img src="{% static 'images/2011-1.jpg' %}"
+             alt="Passionate presenter speaking at Skepticamp NYC"
+             class="collage-img collage-img--sm collage-img--top"
+             width="300" height="200"
+             loading="lazy">
+        <img src="{% static 'images/2012-3.jpg' %}"
+             alt="Entertainer performing with ukulele at Skepticamp NYC"
+             class="collage-img collage-img--sm collage-img--bottom"
+             width="300" height="200"
+             loading="lazy">
+      </div>
     </div>
 
   </div>
@@ -262,27 +311,70 @@
 
 
 <!-- ============================================================
-     PAST EVENTS STRIP
+     PAST EVENTS — Photo mosaic gallery
      ============================================================ -->
-<section class="past-events-strip" aria-labelledby="past-events-heading">
+<section class="past-events-section" aria-labelledby="past-events-heading">
   <div class="container container--standard">
-    <div class="past-events-skyline" aria-hidden="true">
-      <img src="{% static 'images/event-photo-illustration.svg' %}"
-           alt=""
-           class="past-events-skyline-img"
-           width="480"
-           height="320"
-           loading="lazy">
+
+    <header class="section-header reveal">
+      <p class="text-overline" style="margin-bottom:var(--space-sm);">Since 2009</p>
+      <h2 id="past-events-heading">15+ Years of Skepticamp NYC</h2>
+      <p>Real moments from our community gatherings over the years.</p>
+    </header>
+
+    <!-- Photo mosaic grid -->
+    <div class="photo-mosaic reveal" aria-label="Photos from past Skepticamp NYC events">
+      <figure class="mosaic-item mosaic-item--wide">
+        <img src="{% static 'images/2009-1.jpg' %}"
+             alt="Packed audience at the inaugural Skepticamp NYC in 2009"
+             width="600" height="400"
+             loading="lazy">
+        <figcaption class="mosaic-caption">Skepticamp NYC 2009</figcaption>
+      </figure>
+      <figure class="mosaic-item">
+        <img src="{% static 'images/2010-1.jpg' %}"
+             alt="Dynamic board-breaking demonstration at Skepticamp NYC 2010"
+             width="400" height="267"
+             loading="lazy">
+        <figcaption class="mosaic-caption">2010</figcaption>
+      </figure>
+      <figure class="mosaic-item">
+        <img src="{% static 'images/2010-3.jpg' %}"
+             alt="Presenter engaging with the audience at Skepticamp NYC 2010"
+             width="400" height="267"
+             loading="lazy">
+        <figcaption class="mosaic-caption">2010</figcaption>
+      </figure>
+      <figure class="mosaic-item mosaic-item--tall">
+        <img src="{% static 'images/2011-5.jpg' %}"
+             alt="Speaker in front of Skepticamp NYC 2011 banner"
+             width="400" height="267"
+             loading="lazy">
+        <figcaption class="mosaic-caption">2011</figcaption>
+      </figure>
+      <figure class="mosaic-item">
+        <img src="{% static 'images/2011-3.jpg' %}"
+             alt="Community members participating at Skepticamp NYC 2011"
+             width="400" height="267"
+             loading="lazy">
+        <figcaption class="mosaic-caption">2011</figcaption>
+      </figure>
+      <figure class="mosaic-item mosaic-item--wide">
+        <img src="{% static 'images/2012-1.jpg' %}"
+             alt="Speaker presenting on technical education at Skepticamp NYC 2012"
+             width="600" height="400"
+             loading="lazy">
+        <figcaption class="mosaic-caption">Skepticamp NYC 2012</figcaption>
+      </figure>
     </div>
-    <p class="text-overline" style="margin-bottom:var(--space-sm);">Since 2009</p>
-    <h2 id="past-events-heading" style="font-size:1.75rem; margin-bottom:0;">
-      15+ Years of Skepticamp NYC
-    </h2>
+
+    <!-- Year pills -->
     <div class="year-pills" role="list" aria-label="Past Skepticamp NYC years">
       {% for year in past_years %}
-      <span class="year-pill" role="listitem">{{ year }}</span>
+      <span class="year-pill">{{ year }}</span>
       {% endfor %}
     </div>
+
   </div>
 </section>
 
@@ -292,7 +384,6 @@
 <script>
   // Hero entrance — trigger animations after DOM ready
   document.addEventListener('DOMContentLoaded', function () {
-    // Hero elements are CSS-animated via .hero-animate; already running.
     // Year pills: add a small stagger
     var pills = document.querySelectorAll('.year-pill');
     pills.forEach(function (pill, i) {
