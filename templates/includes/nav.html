@@ -3,6 +3,13 @@
 
     <!-- Logo -->
     <a href="/" class="nav-logo" aria-label="Skepticamp NYC — home">
+      {% load static %}
+      <img src="{% static 'images/skepticamp-logo.svg' %}"
+           alt=""
+           aria-hidden="true"
+           class="nav-logo-img"
+           width="36"
+           height="36">
       <span class="nav-logo-name">
         <span class="nav-logo-s">S</span>kepticamp
       </span>
@@ -22,6 +29,10 @@
       <li>
         <a href="/contact/" class="nav-link {% if '/contact' in request.path %}nav-link--active{% endif %}"
            {% if '/contact' in request.path %}aria-current="page"{% endif %}>Contact</a>
+      </li>
+      <li>
+        <a href="/my-registration/" class="nav-link {% if '/my-registration' in request.path %}nav-link--active{% endif %}"
+           {% if '/my-registration' in request.path %}aria-current="page"{% endif %}>My Registration</a>
       </li>
     </ul>
 
@@ -63,6 +74,7 @@
     <li><a href="/" class="mobile-menu-link">Home</a></li>
     <li><a href="/about/" class="mobile-menu-link">About</a></li>
     <li><a href="/contact/" class="mobile-menu-link">Contact</a></li>
+    <li><a href="/my-registration/" class="mobile-menu-link">My Registration</a></li>
   </ul>
 
   <div class="mobile-menu-register">

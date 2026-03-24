@@ -234,6 +234,25 @@ const dietaryOptions = ['Vegetarian', 'Vegan', 'Gluten-free', 'Nut allergy', 'Da
       <p class="form-help">We'll do our best to accommodate your preference, but can't guarantee it.</p>
     </div>
 
+    <div class="form-group">
+      <label for="p-donation" class="form-label">Optional Donation</label>
+      <div style="display:flex; align-items:center; gap:0;">
+        <span style="height:44px; display:flex; align-items:center; padding:0 12px; background:var(--bg-card); border:1px solid var(--border-default); border-right:none; border-radius:var(--radius-md) 0 0 var(--radius-md); color:var(--text-muted); font-size:1rem;">$</span>
+        <input
+          id="p-donation"
+          type="number"
+          class="form-input"
+          :value="formData.donation_amount"
+          @input="update('donation_amount', $event.target.value)"
+          style="border-radius:0 var(--radius-md) var(--radius-md) 0;"
+          placeholder="20"
+          min="1"
+          max="500"
+        >
+      </div>
+      <p class="form-help">100% of donations support NYC Skeptics events. Completely optional.</p>
+    </div>
+
     <fieldset style="border:none; padding:0;">
       <legend class="form-label" style="margin-bottom:var(--space-sm);">Dietary Restrictions</legend>
       <div class="checkbox-group" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-sm);">
@@ -313,9 +332,13 @@ const dietaryOptions = ['Vegetarian', 'Vegan', 'Gluten-free', 'Nut allergy', 'Da
           <dt style="color:var(--text-muted); font-size:0.875rem;">Talk</dt>
           <dd style="color:var(--text-primary); font-weight:500; text-align:right;">{{ formData.talk_title }}</dd>
         </div>
-        <div style="display:flex; justify-content:space-between;">
+        <div style="display:flex; justify-content:space-between; padding-bottom:var(--space-sm); border-bottom:1px solid var(--border-subtle);">
           <dt style="color:var(--text-muted); font-size:0.875rem;">Duration</dt>
           <dd style="color:var(--text-primary); font-weight:500;">{{ formData.talk_duration }} minutes</dd>
+        </div>
+        <div v-if="formData.donation_amount" style="display:flex; justify-content:space-between;">
+          <dt style="color:var(--text-muted); font-size:0.875rem;">Donation</dt>
+          <dd style="color:var(--text-primary); font-weight:500;">${{ formData.donation_amount }}</dd>
         </div>
       </dl>
     </div>

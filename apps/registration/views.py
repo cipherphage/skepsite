@@ -1,14 +1,16 @@
 import json
 import re
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
 from django.views import View
 from django.http import JsonResponse, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages
 
 from apps.events.models import Event
 from .models import Registration
+from .forms import RegistrantLoginForm, PresentationEditForm
 from apps.communications.email_utils import send_registration_confirmation
 
 
@@ -218,3 +220,133 @@ class CalendarICSView(View):
             'END:VEVENT\r\n'
             'END:VCALENDAR\r\n'
         )
+
+
+# ---------------------------------------------------------------------------
+# Registrant sign-in flow
+# ---------------------------------------------------------------------------
+
+def _get_registrant(request):
+    """Retrieve the logged-in registrant from session, or None."""
+    registration_id = request.session.get('registration_id')
+    if registration_id is None:
+        return None
+    try:
+        return Registration.objects.get(pk=registration_id)
+    except Registration.DoesNotExist:
+        # Stale session — clean up
+        request.session.pop('registration_id', None)
+        return None
+
+
+@method_decorator(csrf_protect, name='dispatch')
+class RegistrantLoginView(View):
+    """Sign in with email + confirmation number."""
+    template_name = 'registration/registrant_login.html'
+
+    def get(self, request):
+        # If already signed in, redirect straight to dashboard
+        if _get_registrant(request) is not None:
+            return redirect('registrant:dashboard')
+        form = RegistrantLoginForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = RegistrantLoginForm(request.POST)
+        if form.is_valid():
+            registration = form.cleaned_data['registration']
+            request.session['registration_id'] = registration.pk
+            return redirect('registrant:dashboard')
+        return render(request, self.template_name, {'form': form})
+
+
+class RegistrantDashboardView(View):
+    """Dashboard showing registration details for signed-in registrant."""
+    template_name = 'registration/registrant_dashboard.html'
+
+    def get(self, request):
+        registration = _get_registrant(request)
+        if registration is None:
+            return redirect('registrant:login')
+
+        event = Event.objects.filter(is_active=True).first()
+
+        # Build deadline ISO string for the countdown component
+        editing_deadline_iso = None
+        editing_open = True
+        if event and event.editing_deadline:
+            editing_deadline_iso = event.editing_deadline.isoformat()
+            editing_open = event.is_editing_open
+
+        return render(request, self.template_name, {
+            'registration': registration,
+            'event': event,
+            'editing_deadline_iso': editing_deadline_iso,
+            'editing_open': editing_open,
+        })
+
+
+class RegistrantLogoutView(View):
+    """Sign out the registrant."""
+    def post(self, request):
+        request.session.pop('registration_id', None)
+        return redirect('registrant:login')
+
+    def get(self, request):
+        request.session.pop('registration_id', None)
+        return redirect('registrant:login')
+
+
+@method_decorator(csrf_protect, name='dispatch')
+class PresentationEditView(View):
+    """Edit presentation details — only for presenters, before deadline."""
+    template_name = 'registration/presentation_edit.html'
+
+    def get(self, request):
+        registration = _get_registrant(request)
+        if registration is None:
+            return redirect('registrant:login')
+        if registration.registration_type != Registration.PRESENTER:
+            messages.error(request, 'Only presenters can edit presentation details.')
+            return redirect('registrant:dashboard')
+
+        event = Event.objects.filter(is_active=True).first()
+        if event and not event.is_editing_open:
+            messages.error(request, 'The editing deadline has passed. You can no longer edit your presentation.')
+            return redirect('registrant:dashboard')
+
+        form = PresentationEditForm(instance=registration)
+        editing_deadline_iso = event.editing_deadline.isoformat() if event and event.editing_deadline else None
+        return render(request, self.template_name, {
+            'form': form,
+            'registration': registration,
+            'event': event,
+            'editing_deadline_iso': editing_deadline_iso,
+        })
+
+    def post(self, request):
+        registration = _get_registrant(request)
+        if registration is None:
+            return redirect('registrant:login')
+        if registration.registration_type != Registration.PRESENTER:
+            messages.error(request, 'Only presenters can edit presentation details.')
+            return redirect('registrant:dashboard')
+
+        event = Event.objects.filter(is_active=True).first()
+        if event and not event.is_editing_open:
+            messages.error(request, 'The editing deadline has passed. You can no longer edit your presentation.')
+            return redirect('registrant:dashboard')
+
+        form = PresentationEditForm(request.POST, instance=registration)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your presentation details have been updated.')
+            return redirect('registrant:dashboard')
+
+        editing_deadline_iso = event.editing_deadline.isoformat() if event and event.editing_deadline else None
+        return render(request, self.template_name, {
+            'form': form,
+            'registration': registration,
+            'event': event,
+            'editing_deadline_iso': editing_deadline_iso,
+        })

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <!-- Hero decorative illustration: abstract science/knowledge motifs -->
+  <defs>
+    <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FAAFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#C084FC" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FAAFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C084FC" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <!-- Orbital rings -->
+  <ellipse cx="300" cy="200" rx="250" ry="80" stroke="url(#hg2)" stroke-width="1" fill="none" transform="rotate(-20 300 200)"/>
+  <ellipse cx="300" cy="200" rx="200" ry="100" stroke="url(#hg2)" stroke-width="1" fill="none" transform="rotate(30 300 200)"/>
+  <ellipse cx="300" cy="200" rx="280" ry="60" stroke="url(#hg2)" stroke-width="0.5" fill="none" transform="rotate(60 300 200)"/>
+  <!-- Knowledge nodes -->
+  <circle cx="300" cy="200" r="24" fill="url(#hg1)" stroke="#4FAAFF" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="140" cy="160" r="8" fill="#4FAAFF" fill-opacity="0.2"/>
+  <circle cx="460" cy="240" r="8" fill="#C084FC" fill-opacity="0.2"/>
+  <circle cx="380" cy="100" r="6" fill="#34D399" fill-opacity="0.2"/>
+  <circle cx="220" cy="300" r="6" fill="#FBBF24" fill-opacity="0.2"/>
+  <circle cx="480" cy="140" r="5" fill="#4FAAFF" fill-opacity="0.15"/>
+  <circle cx="120" cy="280" r="5" fill="#C084FC" fill-opacity="0.15"/>
+  <!-- Connection lines -->
+  <line x1="300" y1="200" x2="140" y2="160" stroke="#4FAAFF" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="300" y1="200" x2="460" y2="240" stroke="#C084FC" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="300" y1="200" x2="380" y2="100" stroke="#34D399" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="300" y1="200" x2="220" y2="300" stroke="#FBBF24" stroke-width="0.5" stroke-opacity="0.15"/>
+  <!-- Central atom/apple symbol -->
+  <circle cx="300" cy="200" r="12" fill="none" stroke="#4FAAFF" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="300" cy="200" r="4" fill="#4FAAFF" fill-opacity="0.5"/>
+</svg>

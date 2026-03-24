@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Skepticamp NYC Logo: Apple of Knowledge with a bite -->
+  <defs>
+    <linearGradient id="apple-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FAAFF"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+  </defs>
+  <!-- Apple body -->
+  <path d="M24 8c-2-3-6-4-8-3 1-3 4-5 8-5s7 2 8 5c-2-1-6 0-8 3z" fill="url(#apple-grad)" opacity="0.8"/>
+  <path d="M14 20c0-6 4.5-11 10-11s10 5 10 11c0 8-4 16-10 19-6-3-10-11-10-19z" fill="url(#apple-grad)"/>
+  <!-- Bite mark -->
+  <circle cx="32" cy="22" r="6" fill="#0D0F1A" class="logo-bite"/>
+  <!-- Leaf -->
+  <path d="M24 9c2-4 6-7 10-7-1 4-4 7-8 8l-2-1z" fill="#34D399"/>
+  <!-- Stem -->
+  <path d="M24 5v6" stroke="#34D399" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

@@ -52,7 +52,8 @@
   {% block extra_js %}{% endblock %}
 
   <!-- Vue components — loads ThemeToggle, CookieConsent, RegistrationWizard, etc. -->
-  <script type="module" src="{% static 'dist/assets/main-tMfPJKtJ.js' %}" onerror="this.remove()"></script>
+  {% load vite %}
+  {% vite_asset "frontend/main.js" %}
 
   <!-- Fallback: minimal theme toggle JS if Vue bundle not built yet -->
   <script>

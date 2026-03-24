@@ -25,6 +25,16 @@
 <section aria-label="About Skepticamp NYC">
   <div class="about-content">
 
+    <!-- Timeline illustration -->
+    <div class="about-timeline-wrap reveal">
+      <img src="{% static 'images/about-history.svg' %}"
+           alt="Timeline showing Skepticamp NYC growth from 2009 to 2025"
+           class="about-timeline-img"
+           width="480"
+           height="200"
+           loading="lazy">
+    </div>
+
     <p>
       Skepticamp NYC has been gathering curious New Yorkers since 2009. What started as
       a small gathering of skeptics, scientists, and science enthusiasts has grown into
@@ -38,8 +48,26 @@
       equally valued.
     </p>
 
+    <!-- Community illustration -->
+    <div class="about-community-wrap reveal">
+      <img src="{% static 'images/community-illustration.svg' %}"
+           alt="Illustration of diverse community members connecting and sharing ideas"
+           class="about-community-img"
+           width="400"
+           height="400"
+           loading="lazy">
+    </div>
+
     <p>
-      We're organized by the <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer">New York City Skeptics</a>,
+      We're organized by the
+      <a href="https://www.nycskeptics.org/" target="_blank" rel="noopener noreferrer" class="about-org-link">
+        <img src="{% static 'images/nyc-skeptics-logo.svg' %}"
+             alt="NYC Skeptics"
+             class="about-org-logo"
+             width="140"
+             height="34"
+             loading="lazy">
+        New York City Skeptics</a>,
       a non-profit dedicated to promoting science literacy and critical thinking in
       the five boroughs and beyond. The event is free — always has been, always will be.
       We accept optional donations to cover venue costs and keep the lights on.
@@ -110,6 +138,25 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- Donation section -->
+<section aria-label="Support NYC Skeptics">
+  <div id="donation-callout-about" data-variant="full">
+    <!-- Vue mounts DonationCallout here; fallback for no-JS: -->
+    <noscript>
+      <div style="text-align:center; padding:var(--space-3xl) var(--space-lg);">
+        <h2 style="margin-bottom:var(--space-md);">Help Keep Skepticamp NYC Free</h2>
+        <p style="margin-bottom:var(--space-lg); color:var(--text-secondary);">
+          NYC Skeptics is a 501(c)(3) nonprofit. Your tax-deductible donation helps cover venue, A/V, and refreshment costs.
+        </p>
+        <form action="https://www.paypal.com/donate" method="post" target="_top" style="display:inline-block;">
+          <input type="hidden" name="hosted_button_id" value="83MUR59PT8XBS">
+          <button type="submit" class="btn btn-secondary-accent btn-lg" style="cursor:pointer;">Donate via PayPal</button>
+        </form>
+      </div>
+    </noscript>
   </div>
 </section>
 
